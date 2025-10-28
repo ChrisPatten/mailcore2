@@ -157,7 +157,7 @@ build_git_osx()
 {
   sdk="`xcodebuild -showsdks 2>/dev/null | grep macosx | grep -v driverkit | head -1 | sed 's/.*-sdk macosx\(.*\)/\1/'`"
   archs="x86_64 arm64"
-  sdkminversion="10.7"
+  sdkminversion="10.13"
   
   if test "x$name" = x ; then
     return
@@ -218,7 +218,7 @@ build_git_osx()
   echo building $name $version - $rev
 
   cd "$srcdir/$name/build-mac"
-  xcodebuild -project "$xcode_project" -sdk macosx$sdk -scheme "$xcode_target" -configuration Release ARCHS="$archs" SYMROOT="$tmpdir/bin" OBJROOT="$tmpdir/obj" MACOSX_DEPLOYMENT_TARGET="$sdkminversion" build
+  xcodebuild -project "$xcode_project" -sdk macosx$sdk -scheme "$xcode_target" -configuration Release ARCHS="$archs" SYMROOT="$tmpdir/bin" OBJROOT="$tmpdir/obj" MACOSX_DEPLOYMENT_TARGET="$sdkminversion" OTHER_CFLAGS="-Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE" build
   if test x$? != x0 ; then
     echo failed
     exit 1
