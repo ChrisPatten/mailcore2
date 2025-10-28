@@ -25,6 +25,7 @@ DerivedData
 *.xccheckout
 .swiftpm/
 .build/
+.vscode/
 
 #CocoaPods
 Pods

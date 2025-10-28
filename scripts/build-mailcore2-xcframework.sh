@@ -14,7 +14,7 @@ cd build-mac
 
 # Build Mac Archive
 xcodebuild archive -scheme "mailcore osx" \
-    -arch "x86_64" \
+    -arch "x86_64" -arch "arm64" \
     -archivePath "$BUILD_DIR/mailcore2.macOS.xcarchive" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
@@ -29,7 +29,7 @@ xcodebuild archive -scheme "mailcore ios" \
 
 # Build iOS Simulator Archive
 xcodebuild archive -scheme "mailcore ios" \
-    -arch "x86_64" \
+    -arch "x86_64" -arch "arm64" \
     -archivePath "$BUILD_DIR/mailcore2.iOS-Simulator.xcarchive" \
     -sdk iphonesimulator \
     SKIP_INSTALL=NO \
